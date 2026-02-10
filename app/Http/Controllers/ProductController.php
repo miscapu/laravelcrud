@@ -54,6 +54,27 @@ class ProductController extends Controller
             ->with('success', 'Product created successfully.');
     }
 
+    public function edit(Product $product)
+    {
+        $data = [
+            'title' => 'Edit Product',
+            'product' => $product
+        ];
+        return view('Pages.Products.Edit', $data);
+    }
+
+    public function update(Request $request, Product $product)
+    {
+        $request = $request->validate([
+            'name' => 'required',
+            'price' => 'required|numeric',
+        ]);
+        $product->update($request);
+        return redirect()
+            ->route('Products.index')
+            ->with('success', 'Product updated successfully.');
+    }
+
 
 
 }

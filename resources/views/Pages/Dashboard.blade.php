@@ -30,7 +30,7 @@
             <td>{{$product->updated_at}}</td>
             <td>
                 <a href="{{route('Pages.Products.show', $product->id)}}" class="btn btn-info btn-sm badge">View</a>
-                <a href="#" class="btn btn-primary btn-sm badge">Edit</a>
+                <a href="{{route('Pages.Products.edit', $product)}}" class="btn btn-primary btn-sm badge">Edit</a>
                 <a href="#" class="btn btn-danger btn-sm badge">Delete</a>
             </td>
         </tr>

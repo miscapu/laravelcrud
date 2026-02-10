@@ -16,6 +16,10 @@ Route::get('/create', [ProductController::class, 'create'])
 ->name('Pages.Products.create');
 Route::post('/store', [ProductController::class, 'store'])
 ->name('Pages.Products.store');
+Route::get('/edit/{product}', [ProductController::class, 'edit'])
+    ->name('Pages.Products.edit');
+Route::PUT('/update/{product}', [ProductController::class, 'update'])
+    ->name('Pages.Products.update');
 
 
 
