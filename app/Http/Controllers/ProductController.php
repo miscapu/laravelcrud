@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function index()
     {
         $products = Product::select('id', 'name', 'price', 'created_at', 'updated_at')->get();
@@ -16,4 +19,41 @@ class ProductController extends Controller
         ];
         return view('Pages.Dashboard', $data);
     }
+
+    /**
+     * @param Request $request
+     * @return void
+     */
+    public function show(Product $product)
+    {
+        $data = [
+            'title'     => 'Product View',
+            'product'   =>  $product
+        ];
+
+        return view('Pages.Products.Show', $data);
+    }
+
+    public function create()
+    {
+        $data = [
+            'title' => 'Create Product',
+        ];
+        return view('Pages.Products.Create', $data);
+    }
+
+    public function store(Request $request)
+    {
+        $request = $request->validate([
+            'name' => 'required',
+            'price' => 'required|numeric',
+        ]);
+        Product::create($request);
+        return redirect()
+            ->route('Products.index')
+            ->with('success', 'Product created successfully.');
+    }
+
+
+
 }

@@ -6,6 +6,8 @@
 
 @section('content')
 
+    <h1 class="modal-title text-center my-5">{{$title}}</h1>
+    <a href="{{route('Pages.Products.create')}}" class="btn btn-primary">Create Product</a>
     {{--Table Bootstrap 5.3--}}
     <table class="table">
         <thead>
@@ -19,19 +21,20 @@
         </tr>
         </thead>
         <tbody>
+        @foreach($products as $product)
         <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>12.1.1</td>
-            <td>12.1.1</td>
+            <th scope="row">{{$product->id}}</th>
+            <td>{{$product->name}}</td>
+            <td>{{$product->price}}</td>
+            <td>{{$product->created_at}}</td>
+            <td>{{$product->updated_at}}</td>
             <td>
-                <a href="#" class="btn btn-info btn-sm badge">View</a>
+                <a href="{{route('Pages.Products.show', $product->id)}}" class="btn btn-info btn-sm badge">View</a>
                 <a href="#" class="btn btn-primary btn-sm badge">Edit</a>
                 <a href="#" class="btn btn-danger btn-sm badge">Delete</a>
             </td>
         </tr>
-
+        @endforeach
         </tbody>
     </table>
     {{--Table Bootstrap 5.3 end--}}

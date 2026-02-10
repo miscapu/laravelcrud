@@ -11,7 +11,7 @@
 
     {{--Grid Bootstrap 5.3--}}
 
-    <div class="container text-center">
+    <div class="container">
         <div class="row">
             <div class="col-1">
 
