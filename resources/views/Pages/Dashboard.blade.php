@@ -31,7 +31,11 @@
             <td>
                 <a href="{{route('Pages.Products.show', $product->id)}}" class="btn btn-info btn-sm badge">View</a>
                 <a href="{{route('Pages.Products.edit', $product)}}" class="btn btn-primary btn-sm badge">Edit</a>
-                <a href="#" class="btn btn-danger btn-sm badge">Delete</a>
+                <form action="{{route('Pages.Products.destroy', $product)}}" method="post" style="display: inline">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger badge btn-sm" onclick="return confirm('Delete?')">delete</button>
+                </form>
             </td>
         </tr>
         @endforeach

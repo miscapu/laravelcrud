@@ -20,6 +20,8 @@ Route::get('/edit/{product}', [ProductController::class, 'edit'])
     ->name('Pages.Products.edit');
 Route::PUT('/update/{product}', [ProductController::class, 'update'])
     ->name('Pages.Products.update');
+Route::DELETE('/destroy/{product}', [ProductController::class, 'destroy'])
+->name('Pages.Products.destroy');
 
 
 
